@@ -90,31 +90,59 @@ body {
    MOBILE (até 640px) — modo "1 por vez" + carrossel com botões
    ========================= */
 @media (max-width: 640px) {
-    /* Card único do animal (arrastável) */
+    /* Área do card centralizado acima dos baldes */
     .mobile-quiz {
-        padding: 1rem;
+        padding: 12px 12px 6px;
+        min-height: 38vh; /* reserva área acima dos baldes */
+        display: flex;
+        align-items: center;
+        justify-content: center;
         animation: fadeIn .25s ease-in-out;
     }
-    .mobile-quiz .item-card {
-        background: rgba(255,255,255,0.92);
-        border-radius: 16px;
-        border: 2px solid rgba(255,255,255,0.6);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        padding: 16px;
-        text-align: center;
-    }
-    .mobile-quiz .item-card .text-2xl { font-size: 3rem; line-height: 1; }
-    .mobile-quiz .item-card .font-extrabold { font-size: 1.2rem; }
-    .mobile-quiz .hint { opacity: .8; }
 
-    /* Carrossel controlado por botões */
+    /* Card do animal: maior, centralizado, coluna (emoji + nome) */
+    .mobile-quiz .item-card {
+        box-sizing: border-box;
+        width: min(92vw, 460px);
+        max-width: 460px;
+        background: rgba(255,255,255,0.95);
+        border-radius: 18px;
+        border: 2px solid rgba(255,255,255,0.7);
+        box-shadow: 0 10px 26px rgba(0,0,0,0.15);
+        padding: 18px 16px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin: 0 auto;
+    }
+    .mobile-quiz .item-card .text-2xl {
+        font-size: 4.2rem; /* emoji grande e dentro do card */
+        line-height: 1;
+        display: block;
+        margin-bottom: 4px;
+        word-break: keep-all;
+    }
+    .mobile-quiz .item-card .font-extrabold {
+        font-size: 1.35rem;
+        line-height: 1.15;
+        max-width: 90%;
+        overflow-wrap: anywhere; /* evita estourar */
+        word-break: break-word;
+        margin: 0 auto;
+    }
+    .mobile-quiz .hint { opacity: .85; }
+
+    /* Carrossel controlado por botões (um bucket por vez) */
     .m-buckets {
         position: relative;
         display: grid;
-        grid-template-columns: 44px 1fr 44px; /* prev | viewport | next */
+        grid-template-columns: 48px 1fr 48px; /* prev | viewport | next */
         align-items: center;
-        gap: 8px;
-        margin-top: 8px;
+        gap: 10px;
+        margin-top: 6px;
+        padding: 4px 0 8px;
     }
     .m-viewport {
         overflow: hidden;
@@ -125,22 +153,23 @@ body {
         width: 100%;
         transform: translateX(0);
         transition: transform 220ms ease;
+        will-change: transform;
     }
     .m-slide {
         flex: 0 0 100%;
         max-width: 100%;
-        padding: 0; /* o padding fica dentro do bucket */
+        padding: 0;
     }
 
     /* Botões Prev/Next grandes (tap target) */
     .m-nav {
-        height: 44px; width: 44px;
+        height: 48px; width: 48px;
         border-radius: 999px;
-        background: rgba(255,255,255,0.85);
+        background: rgba(255,255,255,0.9);
         border: 2px solid rgba(255,255,255,0.7);
         box-shadow: 0 6px 14px rgba(0,0,0,0.12);
         display: grid; place-items: center;
-        font-size: 22px; font-weight: 900;
+        font-size: 24px; font-weight: 900;
         backdrop-filter: blur(4px);
         cursor: pointer;
         user-select: none;

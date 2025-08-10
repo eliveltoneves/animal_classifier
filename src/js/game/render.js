@@ -66,15 +66,18 @@ export function renderBuckets(categories) {
   wrapper.appendChild(nextBtn);
   els.buckets.appendChild(wrapper);
 
+  // estado inicial
   mobileBucketIndex = 0;
   updateBucketCarousel();
 
   prevBtn.addEventListener("click", () => {
-    mobileBucketIndex = Math.max(0, mobileBucketIndex - 1);
+    // wrap-around: se estiver no primeiro, vai para o último
+    mobileBucketIndex = (mobileBucketIndex - 1 + CURRENT_CATEGORIES.length) % CURRENT_CATEGORIES.length;
     updateBucketCarousel();
   });
   nextBtn.addEventListener("click", () => {
-    mobileBucketIndex = Math.min(CURRENT_CATEGORIES.length - 1, mobileBucketIndex + 1);
+    // wrap-around: se estiver no último, volta para o primeiro
+    mobileBucketIndex = (mobileBucketIndex + 1) % CURRENT_CATEGORIES.length;
     updateBucketCarousel();
   });
 
@@ -146,19 +149,17 @@ function renderMobileOneAtATime(pickRandom = false) {
   }
   MOBILE_CURRENT_ID = item.id;
 
-  // card arrastável (reusa nossa lógica de DnD custom)
+  // card arrastável (reusa nossa lógica de DnD custom via wireDragEvents)
   const card = document.createElement("div");
   card.className =
-    "item-card group w-full bg-white text-slate-900 transition border text-left p-4 flex items-center justify-center gap-2 select-none";
+    "item-card group bg-white text-slate-900 transition border text-left p-4 select-none";
   card.dataset.id = item.id;
   card.style.cursor = "grab";
   card.style.touchAction = "none"; // ajuda no touch
   card.innerHTML = `
-    <span class="text-2xl" style="font-size:3rem; line-height:1">${item.emoji}</span>
-    <div class="flex-1 text-center">
-      <div class="font-extrabold leading-tight" style="font-size:1.2rem">${item.nome}</div>
-      <div class="text-xs hint">Arraste até o balde correto</div>
-    </div>
+    <div class="text-2xl" style="font-size:4.2rem; line-height:1; display:block; text-align:center">${item.emoji}</div>
+    <div class="font-extrabold leading-tight" style="font-size:1.35rem; text-align:center; margin-top:6px">${item.nome}</div>
+    <div class="text-xs hint" style="text-align:center; margin-top:4px">Arraste até o balde correto</div>
   `;
 
   // Seleção + DnD
