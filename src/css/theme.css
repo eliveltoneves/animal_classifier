@@ -8,169 +8,14 @@ body {
 }
 
 /* Animações e efeitos visuais */
-.shake {
-    animation: shake 400ms ease-in-out;
-}
-
-@keyframes shake {
-
-    10%,
-    90% {
-        transform: translateX(-2px);
-    }
-
-    20%,
-    80% {
-        transform: translateX(4px);
-    }
-
-    30%,
-    50%,
-    70% {
-        transform: translateX(-6px);
-    }
-
-    40%,
-    60% {
-        transform: translateX(6px);
-    }
-}
-
-.pop {
-    animation: pop 350ms ease-out;
-}
-
-@keyframes pop {
-    0% {
-        transform: scale(0.9);
-        opacity: 0.6;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.drop-highlight {
-    box-shadow: inset 0 0 0 3px rgba(59, 130, 246, 0.6), 0 8px 24px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-    transition: all 120ms ease;
-}
-
-/* Confete simples com emojis */
-.confetti {
-    position: fixed;
-    top: -10vh;
-    font-size: 20px;
-    animation: fall linear forwards;
-    z-index: 50;
-    pointer-events: none;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
-}
-
-@keyframes fall {
-    0% {
-        transform: translateY(-10vh) rotate(0deg);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 1;
-    }
-}
-
-/* Rolagem suave nos baldes para muitos itens (se o usuário ampliar a lista) */
-.bucket-items {
-    max-height: 240px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-}
-
-.bucket-items::-webkit-scrollbar {
-    width: 6px;
-}
-
-.bucket-items::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 8px;
-}
-
-/* ===== Modal do Picker ===== */
-.picker-backdrop {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.35);
-    display: grid; place-items: end; /* bottom sheet */
-    z-index: 1000;
-}
-.picker-dialog {
-    width: 100%; max-width: 640px;
-    background: #fff; color: #0f172a;
-    border-top-left-radius: 18px; border-top-right-radius: 18px;
-    box-shadow: 0 -10px 24px rgba(0,0,0,0.15);
-    padding: 12px 14px 18px;
-}
-.picker-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 10px;
-}
-.picker-close {
-    background: transparent; border: none; font-size: 18px; line-height: 1;
-    padding: 6px 8px; border-radius: 8px; cursor: pointer;
-}
-.picker-body {
-    display: grid; gap: 10px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.picker-btn {
-    display: flex; align-items: center; gap: 10px;
-    padding: 12px 14px; border-radius: 14px; font-weight: 800;
-    border: 2px solid rgba(0,0,0,0.06);
-    background: linear-gradient(135deg, #fffbe6, #e6f7ff);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-}
-
-/* Buckets em carrossel no mobile */
-@media (max-width: 640px) {
-    #buckets {
-        display: flex !important;
-        gap: 12px;
-        overflow-x: auto;
-        padding-bottom: 8px;
-        scroll-snap-type: x mandatory;
-    }
-    #buckets .bucket {
-        min-width: 85%;
-        scroll-snap-align: start;
-    }
-    body { overscroll-behavior: contain; }
-}
-/* Fundo com textura sutil para dar vida sem poluir */
-body {
-    background:
-        radial-gradient(1200px 600px at -10% -10%, rgba(255, 255, 255, 0.08), transparent 50%) no-repeat,
-        radial-gradient(1200px 600px at 110% 110%, rgba(255, 255, 255, 0.08), transparent 50%) no-repeat,
-        linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 45%, #ec4899 100%);
-    min-height: 100vh;
-}
-
-/* Animações e efeitos visuais */
-.shake {
-    animation: shake 400ms ease-in-out;
-}
-
+.shake { animation: shake 400ms ease-in-out; }
 @keyframes shake {
     10%, 90% { transform: translateX(-2px); }
     20%, 80% { transform: translateX(4px); }
     30%, 50%, 70% { transform: translateX(-6px); }
     40%, 60% { transform: translateX(6px); }
 }
-
-.pop {
-    animation: pop 350ms ease-out;
-}
-
+.pop { animation: pop 350ms ease-out; }
 @keyframes pop {
     0% { transform: scale(0.9); opacity: 0.6; }
     100% { transform: scale(1); opacity: 1; }
@@ -192,7 +37,6 @@ body {
     pointer-events: none;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
 }
-
 @keyframes fall {
     0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
     100% { transform: translateY(110vh) rotate(360deg); opacity: 1; }
@@ -204,23 +48,54 @@ body {
     overflow-y: auto;
     scrollbar-width: thin;
 }
-
 .bucket-items::-webkit-scrollbar { width: 6px; }
 .bucket-items::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.35);
     border-radius: 8px;
 }
 
+/* ===== Modal do Picker (mantido, caso ainda use) ===== */
+.picker-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.35);
+    display: grid; place-items: end;
+    z-index: 1000;
+}
+.picker-dialog {
+    width: 100%; max-width: 640px;
+    background: #fff; color: #0f172a;
+    border-top-left-radius: 18px; border-top-right-radius: 18px;
+    box-shadow: 0 -10px 24px rgba(0,0,0,0.15);
+    padding: 12px 14px 18px;
+}
+.picker-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.picker-close {
+    background: transparent; border: none; font-size: 18px; line-height: 1;
+    padding: 6px 8px; border-radius: 8px; cursor: pointer;
+}
+.picker-body {
+    display: grid; gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.picker-btn {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px; border-radius: 14px; font-weight: 800;
+    border: 2px solid rgba(0,0,0,0.06);
+    background: linear-gradient(135deg, #fffbe6, #e6f7ff);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
 /* =========================
-   MOBILE (até 640px)
+   MOBILE (até 640px) — modo "1 por vez" + carrossel com botões
    ========================= */
 @media (max-width: 640px) {
-    /* Área do “um animal por vez” */
+    /* Card único do animal (arrastável) */
     .mobile-quiz {
         padding: 1rem;
-        animation: fadeIn 0.25s ease-in-out;
+        animation: fadeIn .25s ease-in-out;
     }
-    .mobile-quiz .animal-card {
+    .mobile-quiz .item-card {
         background: rgba(255,255,255,0.92);
         border-radius: 16px;
         border: 2px solid rgba(255,255,255,0.6);
@@ -228,52 +103,76 @@ body {
         padding: 16px;
         text-align: center;
     }
-    .mobile-quiz .animal-emoji {
-        font-size: 4rem; /* emoji grande */
-        line-height: 1;
-    }
-    .mobile-quiz .animal-name {
-        margin-top: 6px;
-        font-weight: 800;
-        font-size: 1.25rem;
-    }
+    .mobile-quiz .item-card .text-2xl { font-size: 3rem; line-height: 1; }
+    .mobile-quiz .item-card .font-extrabold { font-size: 1.2rem; }
+    .mobile-quiz .hint { opacity: .8; }
 
-    /* Carrossel de baldes no rodapé */
-    #buckets {
-        display: flex !important;
-        gap: 12px;
-        overflow-x: auto;
-        padding: 8px 2px 12px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
+    /* Carrossel controlado por botões */
+    .m-buckets {
+        position: relative;
+        display: grid;
+        grid-template-columns: 44px 1fr 44px; /* prev | viewport | next */
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
     }
-    #buckets .bucket {
-        min-width: 92%;
-        scroll-snap-align: start;
+    .m-viewport {
+        overflow: hidden;
         border-radius: 16px;
     }
-    /* Deixa a zona de drop com borda pontilhada leve para o usuário entender que é interativa */
-    .bucket .bucket-drop {
+    .m-track {
+        display: flex;
+        width: 100%;
+        transform: translateX(0);
+        transition: transform 220ms ease;
+    }
+    .m-slide {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0; /* o padding fica dentro do bucket */
+    }
+
+    /* Botões Prev/Next grandes (tap target) */
+    .m-nav {
+        height: 44px; width: 44px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.85);
+        border: 2px solid rgba(255,255,255,0.7);
+        box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+        display: grid; place-items: center;
+        font-size: 22px; font-weight: 900;
+        backdrop-filter: blur(4px);
+        cursor: pointer;
+        user-select: none;
+    }
+    .m-nav:active { transform: scale(0.96); }
+
+    /* Aparência do bucket em mobile */
+    #buckets .bucket {
+        border-radius: 16px;
+        margin: 0;
+    }
+    #buckets .bucket .bucket-drop {
         border: 2px dashed rgba(255,255,255,0.35);
         border-radius: 14px;
         background: rgba(255,255,255,0.18);
         padding: 10px;
         min-height: 96px;
     }
-    /* Itens dentro do balde: “chips" com nome do animal */
-    .bucket .bucket-items > div {
+    /* Chip dentro do bucket */
+    #buckets .bucket .bucket-items > div {
         display: flex;
         align-items: center;
         gap: 8px;
         padding: 6px 8px;
         border-radius: 12px;
         background: rgba(255,255,255,0.9);
-        color: #064e3b; /* verde escuro */
+        color: #064e3b;
         border: 1px solid rgba(16,185,129,0.25);
         font-weight: 700;
     }
 
-    /* Evita “bounce” quando arrasta horizontal */
+    /* Evita bounce quando arrasta horizontal */
     body { overscroll-behavior: contain; }
 }
 
