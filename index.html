@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,7 +8,21 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./src/css/theme.css" />
 </head>
+
 <body class="text-slate-900 antialiased bg-kids">
+  <!-- Modal de escolha de categoria (mobile) -->
+  <div id="pickerModal" class="picker-backdrop hidden">
+    <div class="picker-dialog">
+      <div class="picker-header">
+        <span class="text-xl font-extrabold">Escolha a categoria</span>
+        <button id="pickerClose" class="picker-close" aria-label="Fechar">✖</button>
+      </div>
+      <div id="pickerBody" class="picker-body">
+        <!-- botões são injetados via JS -->
+      </div>
+    </div>
+  </div>
+
   <div class="max-w-7xl mx-auto px-4 py-6 lg:py-8">
     <!-- Cabeçalho -->
     <header class="mb-6 lg:mb-8">
@@ -17,7 +32,8 @@
         </div>
         <div>
           <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight drop-shadow">Jogo de Categorização: Animais</h1>
-          <p class="text-slate-700 mt-1">Arraste cada animal para o balde correto. Em celular, toque no animal e depois no balde.</p>
+          <p class="text-slate-700 mt-1">Arraste cada animal para o balde correto. Em celular, toque no animal e depois
+            no balde.</p>
         </div>
       </div>
     </header>
@@ -32,7 +48,9 @@
               <span id="progressText" class="text-sm font-bold">0 de 0</span>
             </div>
             <div class="h-3 rounded-full bg-white/60 overflow-hidden">
-              <div id="progressBar" class="h-3 w-0 rounded-full bg-gradient-to-r from-emerald-400 via-lime-300 to-yellow-300 transition-all duration-500"></div>
+              <div id="progressBar"
+                class="h-3 w-0 rounded-full bg-gradient-to-r from-emerald-400 via-lime-300 to-yellow-300 transition-all duration-500">
+              </div>
             </div>
           </div>
           <div class="grid grid-cols-3 gap-3">
@@ -93,4 +111,5 @@
 
   <script type="module" src="./src/js/main.js"></script>
 </body>
+
 </html>
